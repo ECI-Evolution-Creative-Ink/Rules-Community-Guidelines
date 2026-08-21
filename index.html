@@ -1,0 +1,2454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Evolution Games | Rules & Community Guidelines</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#080808;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background{
+    min-height:100vh;
+    padding:60px 20px;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.70),
+            rgba(0,0,0,.90)
+        ),
+        url("https://static.wikia.nocookie.net/rec-room/images/5/5f/Dorm_Room_View.jpg/revision/latest/scale-to-width-down/1200?cb=20241019205835");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+.settings-button{
+    position:fixed;
+    top:20px;
+    right:20px;
+
+    width:50px;
+    height:50px;
+
+    border:1px solid rgba(255,152,0,.35);
+    border-radius:50%;
+
+    background:rgba(15,15,15,.92);
+    color:white;
+
+    font-size:21px;
+    cursor:pointer;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.5);
+
+    transition:.3s;
+
+    z-index:1000;
+}
+
+.settings-button:hover{
+    transform:rotate(25deg) scale(1.08);
+    background:#db7500;
+    box-shadow:0 0 25px rgba(255,152,0,.5);
+}
+
+.settings-menu{
+    position:fixed;
+
+    top:80px;
+    right:20px;
+
+    width:290px;
+
+    padding:25px;
+
+    background:rgba(18,18,18,.97);
+
+    border:1px solid rgba(255,152,0,.25);
+    border-radius:18px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.7);
+
+    backdrop-filter:blur(18px);
+
+    z-index:999;
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(-10px) scale(.96);
+
+    transition:.25s;
+}
+
+.settings-menu.active{
+    opacity:1;
+    visibility:visible;
+
+    transform:translateY(0) scale(1);
+}
+
+.settings-menu h2{
+    color:#ff9800;
+    font-size:20px;
+    margin-bottom:20px;
+}
+
+.settings-label{
+    display:block;
+
+    color:#999;
+
+    font-size:13px;
+
+    margin-bottom:10px;
+}
+
+.language-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.language-button{
+    flex:1;
+
+    padding:12px;
+
+    border:1px solid #3a3a3a;
+
+    background:#202020;
+    color:#fff;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.25s;
+}
+
+.language-button:hover{
+    border-color:#ff9800;
+}
+
+.language-button.active{
+    background:#db7500;
+    border-color:#ff9800;
+
+    box-shadow:0 0 18px rgba(255,152,0,.25);
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container{
+    width:100%;
+    max-width:1180px;
+
+    margin:auto;
+
+    padding:45px;
+
+    background:rgba(13,13,13,.90);
+
+    border:1px solid rgba(255,255,255,.09);
+
+    border-radius:25px;
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.75),
+        inset 0 0 50px rgba(255,255,255,.015);
+
+    animation:containerFade .8s ease;
+}
+
+@keyframes containerFade{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.logo{
+    display:flex;
+    align-items:center;
+
+    margin-bottom:30px;
+}
+
+.logo-icon{
+    width:82px;
+    height:82px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:linear-gradient(
+        135deg,
+        #db7500,
+        #ff9800
+    );
+
+    border-radius:20px;
+
+    font-size:25px;
+    font-weight:900;
+
+    margin-right:20px;
+
+    box-shadow:
+        0 0 30px rgba(219,117,0,.35);
+
+    transition:.3s;
+}
+
+.logo-icon:hover{
+    transform:rotate(4deg) scale(1.04);
+}
+
+.logo h1{
+    font-size:38px;
+    font-weight:800;
+}
+
+.logo p{
+    color:#ff9800;
+
+    letter-spacing:4px;
+
+    margin-top:7px;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    padding:30px;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(219,117,0,.18),
+            rgba(255,152,0,.04)
+        );
+
+    border:1px solid rgba(255,152,0,.20);
+
+    margin-bottom:30px;
+}
+
+.hero h2{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    color:#bdbdbd;
+    line-height:1.8;
+    max-width:850px;
+}
+
+.version{
+    display:inline-block;
+
+    margin-top:18px;
+
+    padding:7px 12px;
+
+    border-radius:20px;
+
+    background:rgba(255,152,0,.12);
+
+    border:1px solid rgba(255,152,0,.25);
+
+    color:#ffb347;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box{
+    margin-bottom:30px;
+}
+
+.search-box input{
+    width:100%;
+
+    padding:17px 20px;
+
+    background:#171717;
+
+    color:#fff;
+
+    border:1px solid #333;
+
+    border-radius:13px;
+
+    outline:none;
+
+    font-size:14px;
+
+    transition:.25s;
+}
+
+.search-box input:focus{
+    border-color:#ff9800;
+
+    box-shadow:
+        0 0 20px rgba(255,152,0,.12);
+}
+
+/* =========================
+   CATEGORY NAVIGATION
+========================= */
+
+.categories{
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
+
+    gap:12px;
+
+    margin-bottom:40px;
+}
+
+.category{
+    display:block;
+
+    padding:15px;
+
+    text-decoration:none;
+
+    color:#ccc;
+
+    background:#181818;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:12px;
+
+    transition:.25s;
+
+    font-weight:bold;
+
+    font-size:14px;
+}
+
+.category:hover{
+    color:#fff;
+
+    background:#222;
+
+    border-color:rgba(255,152,0,.35);
+
+    transform:translateY(-3px);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+    margin-top:45px;
+
+    scroll-margin-top:30px;
+}
+
+.section-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-bottom:18px;
+}
+
+.section-number{
+    width:38px;
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:rgba(255,152,0,.12);
+
+    border:1px solid rgba(255,152,0,.25);
+
+    color:#ff9800;
+
+    font-size:13px;
+
+    font-weight:bold;
+}
+
+.section h2{
+    color:#ff9800;
+
+    font-size:24px;
+}
+
+.section-intro{
+    color:#bcbcbc;
+
+    line-height:1.8;
+
+    margin-bottom:20px;
+}
+
+/* =========================
+   RULE CARDS
+========================= */
+
+.rules{
+    display:grid;
+
+    gap:12px;
+}
+
+.rule{
+    background:
+        linear-gradient(
+            145deg,
+            #1d1d1d,
+            #151515
+        );
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:14px;
+
+    padding:20px;
+
+    transition:.25s;
+}
+
+.rule:hover{
+    transform:translateX(4px);
+
+    border-color:
+        rgba(255,152,0,.30);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+}
+
+.rule h3{
+    color:#fff;
+
+    font-size:16px;
+
+    margin-bottom:8px;
+}
+
+.rule h3 span{
+    color:#ff9800;
+}
+
+.rule p{
+    color:#aaa;
+
+    line-height:1.75;
+
+    font-size:14px;
+}
+
+/* =========================
+   IMPORTANT
+========================= */
+
+.important{
+    margin-top:20px;
+
+    padding:18px 20px;
+
+    border-left:4px solid #ff9800;
+
+    background:rgba(255,152,0,.07);
+
+    border-radius:8px;
+
+    color:#ccc;
+
+    line-height:1.7;
+
+    font-size:14px;
+}
+
+/* =========================
+   CONSEQUENCES
+========================= */
+
+.consequences{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:600px;
+
+    background:#171717;
+
+    border-radius:12px;
+
+    overflow:hidden;
+}
+
+th{
+    text-align:left;
+
+    padding:15px;
+
+    background:#202020;
+
+    color:#ff9800;
+
+    font-size:13px;
+}
+
+td{
+    padding:15px;
+
+    border-top:1px solid rgba(255,255,255,.06);
+
+    color:#bbb;
+
+    font-size:14px;
+
+    line-height:1.5;
+}
+
+tr:hover td{
+    background:#1d1d1d;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    margin-top:55px;
+
+    padding-top:25px;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+.footer strong{
+    color:#aaa;
+}
+
+/* =========================
+   NO RESULTS
+========================= */
+
+.no-results{
+    display:none;
+
+    padding:25px;
+
+    text-align:center;
+
+    color:#888;
+
+    background:#171717;
+
+    border-radius:12px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    .background{
+        padding:25px 12px;
+
+        background-attachment:scroll;
+    }
+
+    .container{
+        padding:25px 18px;
+
+        border-radius:18px;
+    }
+
+    .logo{
+        flex-direction:column;
+
+        text-align:center;
+    }
+
+    .logo-icon{
+        margin-right:0;
+
+        margin-bottom:15px;
+    }
+
+    .logo h1{
+        font-size:27px;
+    }
+
+    .logo p{
+        font-size:10px;
+
+        letter-spacing:2px;
+    }
+
+    .hero h2{
+        font-size:23px;
+    }
+
+    .section h2{
+        font-size:20px;
+    }
+
+    .settings-menu{
+        right:12px;
+
+        width:calc(100% - 24px);
+
+        max-width:290px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     SETTINGS
+========================= -->
+
+<button
+    class="settings-button"
+    id="settingsButton"
+    aria-label="Settings"
+>
+    ⚙
+</button>
+
+<div
+    class="settings-menu"
+    id="settingsMenu"
+>
+
+    <h2 data-i18n="settingsTitle">
+        Settings
+    </h2>
+
+    <span
+        class="settings-label"
+        data-i18n="languageLabel"
+    >
+        Language
+    </span>
+
+    <div class="language-buttons">
+
+        <button
+            class="language-button"
+            id="englishButton"
+            onclick="changeLanguage('en')"
+        >
+            English
+        </button>
+
+        <button
+            class="language-button"
+            id="germanButton"
+            onclick="changeLanguage('de')"
+        >
+            Deutsch
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="background">
+
+<div class="container">
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<div class="logo">
+
+    <div class="logo-icon">
+        EG
+    </div>
+
+    <div>
+
+        <h1>
+            Evolution Games
+        </h1>
+
+        <p data-i18n="subtitle">
+            RULES & COMMUNITY GUIDELINES
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<div class="hero">
+
+    <h2 data-i18n="heroTitle">
+        Official Community Rulebook
+    </h2>
+
+    <p data-i18n="heroText">
+        These rules exist to maintain a respectful, safe,
+        fair and enjoyable environment for everyone playing
+        and participating in the Evolution Games community.
+    </p>
+
+    <span class="version">
+        Version 1.0
+    </span>
+
+</div>
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="ruleSearch"
+        data-i18n-placeholder="search"
+        placeholder="Search the rules..."
+    >
+
+</div>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<div class="categories">
+
+    <a
+        href="#general"
+        class="category"
+        data-i18n="cat1"
+    >
+        General Rules
+    </a>
+
+    <a
+        href="#community"
+        class="category"
+        data-i18n="cat2"
+    >
+        Community
+    </a>
+
+    <a
+        href="#voice"
+        class="category"
+        data-i18n="cat3"
+    >
+        Voice & Communication
+    </a>
+
+    <a
+        href="#content"
+        class="category"
+        data-i18n="cat4"
+    >
+        Content
+    </a>
+
+    <a
+        href="#security"
+        class="category"
+        data-i18n="cat5"
+    >
+        Security
+    </a>
+
+    <a
+        href="#game"
+        class="category"
+        data-i18n="cat6"
+    >
+        Game Rules
+    </a>
+
+    <a
+        href="#staff"
+        class="category"
+        data-i18n="cat7"
+    >
+        Staff
+    </a>
+
+    <a
+        href="#punishments"
+        class="category"
+        data-i18n="cat8"
+    >
+        Enforcement
+    </a>
+
+</div>
+
+
+<div class="no-results" id="noResults">
+    No matching rules found.
+</div>
+
+
+<!-- =========================
+     01 GENERAL
+========================= -->
+
+<section
+    class="section searchable"
+    id="general"
+>
+
+    <div class="section-header">
+
+        <div class="section-number">
+            01
+        </div>
+
+        <h2 data-i18n="generalTitle">
+            General Rules
+        </h2>
+
+    </div>
+
+    <p
+        class="section-intro"
+        data-i18n="generalIntro"
+    >
+        These rules apply to every member of the
+        Evolution Games community.
+    </p>
+
+    <div class="rules">
+
+        <div class="rule">
+            <h3>
+                <span>01.01</span>
+                <span data-i18n="r101t">
+                    Respect Everyone
+                </span>
+            </h3>
+
+            <p data-i18n="r101">
+                Treat all users, creators, developers and
+                team members with respect. Personal disputes
+                should be handled privately and must not
+                disrupt the community.
+            </p>
+        </div>
+
+
+        <div class="rule">
+            <h3>
+                <span>01.02</span>
+                <span data-i18n="r102t">
+                    Follow Staff Instructions
+                </span>
+            </h3>
+
+            <p data-i18n="r102">
+                Official instructions from moderators and
+                administrators must be followed. If you
+                disagree with a moderation decision, contact
+                the staff privately instead of creating
+                unnecessary public conflict.
+            </p>
+        </div>
+
+
+        <div class="rule">
+            <h3>
+                <span>01.03</span>
+                <span data-i18n="r103t">
+                    No Unnecessary Pinging
+                </span>
+            </h3>
+
+            <p data-i18n="r103">
+                Do not repeatedly mention users, roles or
+                staff members without a legitimate reason.
+                Mass mentions and unnecessary notifications
+                are prohibited.
+            </p>
+        </div>
+
+
+        <div class="rule">
+            <h3>
+                <span>01.04</span>
+                <span data-i18n="r104t">
+                    Appropriate Nicknames
+                </span>
+            </h3>
+
+            <p data-i18n="r104">
+                Nicknames must not impersonate another user,
+                staff member or public figure. Names consisting
+                exclusively of special characters or emojis
+                may also be changed by staff.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     02 COMMUNITY
+========================= -->
+
+<section
+    class="section searchable"
+    id="community"
+>
+
+    <div class="section-header">
+
+        <div class="section-number">
+            02
+        </div>
+
+        <h2 data-i18n="communityTitle">
+            Community Conduct
+        </h2>
+
+    </div>
+
+    <div class="rules">
+
+        <div class="rule">
+            <h3>
+                <span>02.01</span>
+                <span data-i18n="r201t">
+                    Harassment & Bullying
+                </span>
+            </h3>
+
+            <p data-i18n="r201">
+                Harassment, bullying, targeted abuse,
+                intimidation and repeated personal attacks
+                are prohibited.
+            </p>
+        </div>
+
+
+        <div class="rule">
+            <h3>
+                <span>02.02</span>
+                <span data-i18n="r202t">
+                    Discrimination
+                </span>
+            </h3>
+
+            <p data-i18n="r202">
+                Racism, sexism, homophobia, transphobia,
+                religious discrimination and other forms
+                of hateful behavior are not tolerated.
+            </p>
+        </div>
+
+
+        <div class="rule">
+            <h3>
+                <span>02.03</span>
+                <span data-i18n="r203t">
+                    Extremist Content
+                </span>
+            </h3>
+
+            <p data-i18n="r203">
+                Extremist propaganda, extremist recruitment,
+                glorification of extremist organizations
+                and content promoting violence are prohibited.
+            </p>
+        </div>
+
+
+        <div class="rule">
+            <h3>
+                <span>02.04</span>
+                <span data-i18n="r204t">
+                    Spam
+                </span>
+            </h3>
+
+            <p data-i18n="r204">
+                Message spam, repeated characters, excessive
+                reactions, sound spam and channel flooding
+                are prohibited.
+            </p>
+        </div>
+
+
+        <div class="rule">
+            <h3>
+                <span>02.05</span>
+                <span data-i18n="r205t">
+                    Advertising
+                </span>
+            </h3>
+
+            <p data-i18n="r205">
+                Advertising other Discord servers, projects,
+                games, services, donation campaigns or
+                personal businesses is prohibited unless
+                explicitly authorized by Evolution Games staff.
+                This also applies to unsolicited advertising
+                through direct messages.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     03 VOICE
+========================= -->
+
+<section
+    class="section searchable"
+    id="voice"
+>
+
+    <div class="section-header">
+
+        <div class="section-number">
+            03
+        </div>
+
+        <h2 data-i18n="voiceTitle">
+            Voice Chat & Communication
+        </h2>
+
+    </div>
+
+    <div class="rules">
+
+        <div class="rule">
+
+            <h3>
+                <span>03.01</span>
+                <span data-i18n="r301t">
+                    Music & Sounds
+                </span>
+            </h3>
+
+            <p data-i18n="r301">
+                Music, microphones, soundboards and other
+                loud audio may only be used when the users
+                present in the channel are comfortable with it.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>03.02</span>
+                <span data-i18n="r302t">
+                    Screaming & Audio Abuse
+                </span>
+            </h3>
+
+            <p data-i18n="r302">
+                Screaming into microphones, intentionally
+                creating extremely loud sounds or repeatedly
+                disturbing voice channels is prohibited.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>03.03</span>
+                <span data-i18n="r303t">
+                    Recording
+                </span>
+            </h3>
+
+            <p data-i18n="r303">
+                Recording conversations, voice channels or
+                livestreams requires the knowledge and consent
+                of the people involved.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>03.04</span>
+                <span data-i18n="r304t">
+                    Streaming
+                </span>
+            </h3>
+
+            <p data-i18n="r304">
+                Streaming movies or television shows without
+                appropriate rights is prohibited. Streams
+                must comply with applicable copyright rules.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     04 CONTENT
+========================= -->
+
+<section
+    class="section searchable"
+    id="content"
+>
+
+    <div class="section-header">
+
+        <div class="section-number">
+            04
+        </div>
+
+        <h2 data-i18n="contentTitle">
+            Content & Creator Rules
+        </h2>
+
+    </div>
+
+    <div class="rules">
+
+        <div class="rule">
+
+            <h3>
+                <span>04.01</span>
+                <span data-i18n="r401t">
+                    NSFW Content
+                </span>
+            </h3>
+
+            <p data-i18n="r401">
+                Pornographic, sexually explicit or excessively
+                sexual content is prohibited within the
+                Evolution Games community.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>04.02</span>
+                <span data-i18n="r402t">
+                    Illegal Content
+                </span>
+            </h3>
+
+            <p data-i18n="r402">
+                Content that facilitates illegal activities,
+                serious violence, exploitation or abuse is
+                prohibited.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>04.03</span>
+                <span data-i18n="r403t">
+                    Copyright
+                </span>
+            </h3>
+
+            <p data-i18n="r403">
+                Do not upload, distribute or claim ownership
+                of content belonging to another creator
+                without permission.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>04.04</span>
+                <span data-i18n="r404t">
+                    Malicious Projects
+                </span>
+            </h3>
+
+            <p data-i18n="r404">
+                Projects must not contain malware, hidden
+                malicious functions, unauthorized data
+                collection or mechanisms intended to damage
+                another user's device or account.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     05 SECURITY
+========================= -->
+
+<section
+    class="section searchable"
+    id="security"
+>
+
+    <div class="section-header">
+
+        <div class="section-number">
+            05
+        </div>
+
+        <h2 data-i18n="securityTitle">
+            Security & Privacy
+        </h2>
+
+    </div>
+
+    <div class="rules">
+
+        <div class="rule">
+
+            <h3>
+                <span>05.01</span>
+                <span data-i18n="r501t">
+                    Scams & Fraud
+                </span>
+            </h3>
+
+            <p data-i18n="r501">
+                Scamming, fraud, fake giveaways, deceptive
+                offers and attempts to steal another user's
+                property or account are strictly prohibited.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>05.02</span>
+                <span data-i18n="r502t">
+                    Personal Information
+                </span>
+            </h3>
+
+            <p data-i18n="r502">
+                Never publish, threaten to publish or distribute
+                another person's private information without
+                their permission.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>05.03</span>
+                <span data-i18n="r503t">
+                    Phishing
+                </span>
+            </h3>
+
+            <p data-i18n="r503">
+                Phishing links, fake login pages, token theft,
+                credential theft and account takeover attempts
+                are strictly prohibited.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>05.04</span>
+                <span data-i18n="r504t">
+                    Unauthorized Access
+                </span>
+            </h3>
+
+            <p data-i18n="r504">
+                Attempting to access private channels,
+                accounts, systems or content without
+                authorization is prohibited.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     06 GAME
+========================= -->
+
+<section
+    class="section searchable"
+    id="game"
+>
+
+    <div class="section-header">
+
+        <div class="section-number">
+            06
+        </div>
+
+        <h2 data-i18n="gameTitle">
+            Game Rules
+        </h2>
+
+    </div>
+
+    <div class="rules">
+
+        <div class="rule">
+
+            <h3>
+                <span>06.01</span>
+                <span data-i18n="r601t">
+                    Exploits
+                </span>
+            </h3>
+
+            <p data-i18n="r601">
+                Exploiting bugs or unintended mechanics to gain
+                an unfair advantage is prohibited.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>06.02</span>
+                <span data-i18n="r602t">
+                    Cheats
+                </span>
+            </h3>
+
+            <p data-i18n="r602">
+                Unauthorized cheats, client modifications,
+                memory manipulation and similar methods of
+                gaining an unfair advantage are prohibited.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>06.03</span>
+                <span data-i18n="r603t">
+                    Crashing & Disruption
+                </span>
+            </h3>
+
+            <p data-i18n="r603">
+                Intentionally crashing games, creating lag
+                machines or deliberately disrupting gameplay
+                is prohibited.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>06.04</span>
+                <span data-i18n="r604t">
+                    Bug Reporting
+                </span>
+            </h3>
+
+            <p data-i18n="r604">
+                Serious bugs and security vulnerabilities
+                should be reported to the development team
+                privately and responsibly.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     07 STAFF
+========================= -->
+
+<section
+    class="section searchable"
+    id="staff"
+>
+
+    <div class="section-header">
+
+        <div class="section-number">
+            07
+        </div>
+
+        <h2 data-i18n="staffTitle">
+            Staff & Moderation
+        </h2>
+
+    </div>
+
+    <div class="rules">
+
+        <div class="rule">
+
+            <h3>
+                <span>07.01</span>
+                <span data-i18n="r701t">
+                    Moderator Decisions
+                </span>
+            </h3>
+
+            <p data-i18n="r701">
+                Moderators may take action when necessary
+                to protect the community, even when a
+                situation is not explicitly described by a
+                specific rule.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>07.02</span>
+                <span data-i18n="r702t">
+                    Moderator Abuse
+                </span>
+            </h3>
+
+            <p data-i18n="r702">
+                Staff members must not abuse their permissions,
+                target users unfairly or use moderation tools
+                for personal reasons.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>07.03</span>
+                <span data-i18n="r703t">
+                    Appeals
+                </span>
+            </h3>
+
+            <p data-i18n="r703">
+                Users may appeal moderation actions through
+                the official support channels. Public arguments
+                about punishments should be avoided.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     08 TEMPORARY CHANNELS
+========================= -->
+
+<section
+    class="section searchable"
+    id="channels"
+>
+
+    <div class="section-header">
+
+        <div class="section-number">
+            08
+        </div>
+
+        <h2 data-i18n="channelsTitle">
+            Temporary Channels
+        </h2>
+
+    </div>
+
+    <div class="rules">
+
+        <div class="rule">
+
+            <h3>
+                <span>08.01</span>
+                <span data-i18n="r801t">
+                    Purpose
+                </span>
+            </h3>
+
+            <p data-i18n="r801">
+                Temporary voice channels are intended for
+                the duration of the relevant conversation
+                or activity.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>08.02</span>
+                <span data-i18n="r802t">
+                    Channel Controls
+                </span>
+            </h3>
+
+            <p data-i18n="r802">
+                Where available, creators may receive limited
+                moderation and editing permissions within
+                their temporary channel.
+            </p>
+
+        </div>
+
+
+        <div class="rule">
+
+            <h3>
+                <span>08.03</span>
+                <span data-i18n="r803t">
+                    Disconnecting Users
+                </span>
+            </h3>
+
+            <p data-i18n="r803">
+                Removing another user from a temporary channel
+                should only be done for a legitimate reason
+                and, where appropriate, after a warning.
+                Disconnecting users for fun or harassment is
+                prohibited.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ENFORCEMENT
+========================= -->
+
+<section
+    class="section searchable"
+    id="punishments"
+>
+
+    <div class="section-header">
+
+        <div class="section-number">
+            09
+        </div>
+
+        <h2 data-i18n="punishmentsTitle">
+            Rule Enforcement
+        </h2>
+
+    </div>
+
+    <p
+        class="section-intro"
+        data-i18n="punishmentsIntro"
+    >
+        Punishments depend on the severity, context and
+        history of a violation. Staff may skip or increase
+        punishments when circumstances require it.
+    </p>
+
+    <div class="consequences">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th data-i18n="tableViolation">
+                        Violation
+                    </th>
+
+                    <th data-i18n="tableAction">
+                        Possible Action
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td data-i18n="table1">
+                        Minor spam or disruption
+                    </td>
+
+                    <td data-i18n="action1">
+                        Warning / Timeout
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-i18n="table2">
+                        Repeated harassment
+                    </td>
+
+                    <td data-i18n="action2">
+                        Timeout / Temporary Ban
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-i18n="table3">
+                        Serious discrimination
+                    </td>
+
+                    <td data-i18n="action3">
+                        Temporary or Permanent Ban
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-i18n="table4">
+                        Scamming / Fraud
+                    </td>
+
+                    <td data-i18n="action4">
+                        Immediate Ban
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-i18n="table5">
+                        Doxxing
+                    </td>
+
+                    <td data-i18n="action5">
+                        Permanent Ban
+                    </td>
+                </tr>
+
+                <tr>
+                    <td data-i18n="table6">
+                        Malware / Account Theft
+                    </td>
+
+                    <td data-i18n="action6">
+                        Permanent Ban
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div
+        class="important"
+        data-i18n="important"
+    >
+        Staff reserve the right to take immediate action
+        against severe threats to the safety, security or
+        integrity of the Evolution Games community.
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<div class="footer">
+
+    <strong>
+        Evolution Games
+    </strong>
+
+    <br>
+
+    <span data-i18n="footer">
+        Official Rules & Community Guidelines
+    </span>
+
+    <br><br>
+
+    © 2026 Evolution Games. All rights reserved.
+
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+/* =========================
+   TRANSLATIONS
+========================= */
+
+const translations = {
+
+en:{
+
+settingsTitle:"Settings",
+languageLabel:"Language",
+
+subtitle:"RULES & COMMUNITY GUIDELINES",
+
+heroTitle:"Official Community Rulebook",
+
+heroText:
+"These rules exist to maintain a respectful, safe, fair and enjoyable environment for everyone playing and participating in the Evolution Games community.",
+
+search:"Search the rules...",
+
+cat1:"General Rules",
+cat2:"Community",
+cat3:"Voice & Communication",
+cat4:"Content",
+cat5:"Security",
+cat6:"Game Rules",
+cat7:"Staff",
+cat8:"Enforcement",
+
+generalTitle:"General Rules",
+
+generalIntro:
+"These rules apply to every member of the Evolution Games community.",
+
+r101t:"Respect Everyone",
+
+r101:
+"Treat all users, creators, developers and team members with respect. Personal disputes should be handled privately and must not disrupt the community.",
+
+r102t:"Follow Staff Instructions",
+
+r102:
+"Official instructions from moderators and administrators must be followed. If you disagree with a moderation decision, contact the staff privately instead of creating unnecessary public conflict.",
+
+r103t:"No Unnecessary Pinging",
+
+r103:
+"Do not repeatedly mention users, roles or staff members without a legitimate reason. Mass mentions and unnecessary notifications are prohibited.",
+
+r104t:"Appropriate Nicknames",
+
+r104:
+"Nicknames must not impersonate another user, staff member or public figure. Names consisting exclusively of special characters or emojis may also be changed by staff.",
+
+communityTitle:"Community Conduct",
+
+r201t:"Harassment & Bullying",
+
+r201:
+"Harassment, bullying, targeted abuse, intimidation and repeated personal attacks are prohibited.",
+
+r202t:"Discrimination",
+
+r202:
+"Racism, sexism, homophobia, transphobia, religious discrimination and other forms of hateful behavior are not tolerated.",
+
+r203t:"Extremist Content",
+
+r203:
+"Extremist propaganda, extremist recruitment, glorification of extremist organizations and content promoting violence are prohibited.",
+
+r204t:"Spam",
+
+r204:
+"Message spam, repeated characters, excessive reactions, sound spam and channel flooding are prohibited.",
+
+r205t:"Advertising",
+
+r205:
+"Advertising other Discord servers, projects, games, services, donation campaigns or personal businesses is prohibited unless explicitly authorized by Evolution Games staff. This also applies to unsolicited advertising through direct messages.",
+
+voiceTitle:"Voice Chat & Communication",
+
+r301t:"Music & Sounds",
+
+r301:
+"Music, microphones, soundboards and other loud audio may only be used when the users present in the channel are comfortable with it.",
+
+r302t:"Screaming & Audio Abuse",
+
+r302:
+"Screaming into microphones, intentionally creating extremely loud sounds or repeatedly disturbing voice channels is prohibited.",
+
+r303t:"Recording",
+
+r303:
+"Recording conversations, voice channels or livestreams requires the knowledge and consent of the people involved.",
+
+r304t:"Streaming",
+
+r304:
+"Streaming movies or television shows without appropriate rights is prohibited. Streams must comply with applicable copyright rules.",
+
+contentTitle:"Content & Creator Rules",
+
+r401t:"NSFW Content",
+
+r401:
+"Pornographic, sexually explicit or excessively sexual content is prohibited within the Evolution Games community.",
+
+r402t:"Illegal Content",
+
+r402:
+"Content that facilitates illegal activities, serious violence, exploitation or abuse is prohibited.",
+
+r403t:"Copyright",
+
+r403:
+"Do not upload, distribute or claim ownership of content belonging to another creator without permission.",
+
+r404t:"Malicious Projects",
+
+r404:
+"Projects must not contain malware, hidden malicious functions, unauthorized data collection or mechanisms intended to damage another user's device or account.",
+
+securityTitle:"Security & Privacy",
+
+r501t:"Scams & Fraud",
+
+r501:
+"Scamming, fraud, fake giveaways, deceptive offers and attempts to steal another user's property or account are strictly prohibited.",
+
+r502t:"Personal Information",
+
+r502:
+"Never publish, threaten to publish or distribute another person's private information without their permission.",
+
+r503t:"Phishing",
+
+r503:
+"Phishing links, fake login pages, token theft, credential theft and account takeover attempts are strictly prohibited.",
+
+r504t:"Unauthorized Access",
+
+r504:
+"Attempting to access private channels, accounts, systems or content without authorization is prohibited.",
+
+gameTitle:"Game Rules",
+
+r601t:"Exploits",
+
+r601:
+"Exploiting bugs or unintended mechanics to gain an unfair advantage is prohibited.",
+
+r602t:"Cheats",
+
+r602:
+"Unauthorized cheats, client modifications, memory manipulation and similar methods of gaining an unfair advantage are prohibited.",
+
+r603t:"Crashing & Disruption",
+
+r603:
+"Intentionally crashing games, creating lag machines or deliberately disrupting gameplay is prohibited.",
+
+r604t:"Bug Reporting",
+
+r604:
+"Serious bugs and security vulnerabilities should be reported to the development team privately and responsibly.",
+
+staffTitle:"Staff & Moderation",
+
+r701t:"Moderator Decisions",
+
+r701:
+"Moderators may take action when necessary to protect the community, even when a situation is not explicitly described by a specific rule.",
+
+r702t:"Moderator Abuse",
+
+r702:
+"Staff members must not abuse their permissions, target users unfairly or use moderation tools for personal reasons.",
+
+r703t:"Appeals",
+
+r703:
+"Users may appeal moderation actions through the official support channels. Public arguments about punishments should be avoided.",
+
+channelsTitle:"Temporary Channels",
+
+r801t:"Purpose",
+
+r801:
+"Temporary voice channels are intended for the duration of the relevant conversation or activity.",
+
+r802t:"Channel Controls",
+
+r802:
+"Where available, creators may receive limited moderation and editing permissions within their temporary channel.",
+
+r803t:"Disconnecting Users",
+
+r803:
+"Removing another user from a temporary channel should only be done for a legitimate reason and, where appropriate, after a warning. Disconnecting users for fun or harassment is prohibited.",
+
+punishmentsTitle:"Rule Enforcement",
+
+punishmentsIntro:
+"Punishments depend on the severity, context and history of a violation. Staff may skip or increase punishments when circumstances require it.",
+
+tableViolation:"Violation",
+tableAction:"Possible Action",
+
+table1:"Minor spam or disruption",
+action1:"Warning / Timeout",
+
+table2:"Repeated harassment",
+action2:"Timeout / Temporary Ban",
+
+table3:"Serious discrimination",
+action3:"Temporary or Permanent Ban",
+
+table4:"Scamming / Fraud",
+action4:"Immediate Ban",
+
+table5:"Doxxing",
+action5:"Permanent Ban",
+
+table6:"Malware / Account Theft",
+action6:"Permanent Ban",
+
+important:
+"Staff reserve the right to take immediate action against severe threats to the safety, security or integrity of the Evolution Games community.",
+
+footer:"Official Rules & Community Guidelines"
+
+},
+
+de:{
+
+settingsTitle:"Einstellungen",
+languageLabel:"Sprache",
+
+subtitle:"REGELN & COMMUNITY-RICHTLINIEN",
+
+heroTitle:"Offizielles Community-Regelwerk",
+
+heroText:
+"Diese Regeln dienen dazu, eine respektvolle, sichere, faire und angenehme Umgebung für alle Mitglieder der Evolution-Games-Community zu gewährleisten.",
+
+search:"Regeln durchsuchen...",
+
+cat1:"Allgemeine Regeln",
+cat2:"Community",
+cat3:"Voice & Kommunikation",
+cat4:"Inhalte",
+cat5:"Sicherheit",
+cat6:"Spielregeln",
+cat7:"Team",
+cat8:"Durchsetzung",
+
+generalTitle:"Allgemeine Regeln",
+
+generalIntro:
+"Diese Regeln gelten für jedes Mitglied der Evolution-Games-Community.",
+
+r101t:"Respekt gegenüber allen",
+
+r101:
+"Behandle alle Benutzer, Creator, Entwickler und Teammitglieder respektvoll. Persönliche Streitigkeiten sollen privat geklärt werden und dürfen die Community nicht beeinträchtigen.",
+
+r102t:"Anweisungen des Teams",
+
+r102:
+"Offizielle Anweisungen von Moderatoren und Administratoren sind zu befolgen. Bei Meinungsverschiedenheiten über eine Moderationsentscheidung soll das Team privat kontaktiert werden.",
+
+r103t:"Keine unnötigen Pings",
+
+r103:
+"Erwähne Benutzer, Rollen oder Teammitglieder nicht wiederholt ohne legitimen Grund. Massen-Erwähnungen und unnötige Benachrichtigungen sind verboten.",
+
+r104t:"Angemessene Nicknames",
+
+r104:
+"Nicknames dürfen nicht dazu verwendet werden, andere Benutzer, Teammitglieder oder bekannte Personen zu imitieren. Namen, die ausschließlich aus Sonderzeichen oder Emojis bestehen, können ebenfalls geändert werden.",
+
+communityTitle:"Verhalten innerhalb der Community",
+
+r201t:"Belästigung & Mobbing",
+
+r201:
+"Belästigung, Mobbing, gezielte Angriffe, Einschüchterung und wiederholte persönliche Angriffe sind verboten.",
+
+r202t:"Diskriminierung",
+
+r202:
+"Rassismus, Sexismus, Homophobie, Transphobie, religiöse Diskriminierung und andere Formen von Hassverhalten werden nicht toleriert.",
+
+r203t:"Extremistische Inhalte",
+
+r203:
+"Extremistische Propaganda, Rekrutierung, Verherrlichung extremistischer Organisationen und Inhalte, die Gewalt fördern, sind verboten.",
+
+r204t:"Spam",
+
+r204:
+"Nachrichten-Spam, wiederholte Zeichen, übermäßige Reaktionen, Soundboard-Spam und das Überfluten von Channels sind verboten.",
+
+r205t:"Werbung",
+
+r205:
+"Werbung für andere Discord-Server, Projekte, Spiele, Dienstleistungen, Spendenaktionen oder persönliche Unternehmen ist verboten, sofern sie nicht ausdrücklich vom Evolution-Games-Team erlaubt wurde. Dies gilt auch für unerwünschte Werbung per Direktnachricht.",
+
+voiceTitle:"Voice Chat & Kommunikation",
+
+r301t:"Musik & Sounds",
+
+r301:
+"Musik, Mikrofone, Soundboards und andere laute Audios dürfen nur verwendet werden, wenn die anwesenden Benutzer damit einverstanden sind.",
+
+r302t:"Schreien & Audiomissbrauch",
+
+r302:
+"Absichtliches Schreien ins Mikrofon, extrem laute Geräusche oder wiederholtes Stören von Voice-Channels sind verboten.",
+
+r303t:"Aufnahmen",
+
+r303:
+"Das Aufnehmen von Gesprächen, Voice-Channels oder Livestreams erfordert die Kenntnis und Zustimmung der beteiligten Personen.",
+
+r304t:"Streaming",
+
+r304:
+"Das Streamen von Filmen oder Fernsehsendungen ohne entsprechende Rechte ist verboten. Streams müssen die geltenden Urheberrechtsbestimmungen einhalten.",
+
+contentTitle:"Inhalte & Creator-Regeln",
+
+r401t:"NSFW-Inhalte",
+
+r401:
+"Pornografische, sexuell explizite oder übermäßig sexuelle Inhalte sind innerhalb der Evolution-Games-Community verboten.",
+
+r402t:"Illegale Inhalte",
+
+r402:
+"Inhalte, die illegale Aktivitäten, schwere Gewalt, Ausbeutung oder Missbrauch fördern oder ermöglichen, sind verboten.",
+
+r403t:"Urheberrecht",
+
+r403:
+"Lade keine Inhalte anderer Creator ohne Erlaubnis hoch, verbreite sie nicht und beanspruche nicht deren Eigentum.",
+
+r404t:"Schädliche Projekte",
+
+r404:
+"Projekte dürfen keine Malware, versteckten schädlichen Funktionen, unautorisierten Datensammlungen oder Mechanismen enthalten, die Geräte oder Accounts anderer Benutzer beschädigen sollen.",
+
+securityTitle:"Sicherheit & Datenschutz",
+
+r501t:"Betrug & Scams",
+
+r501:
+"Betrug, Fake-Giveaways, irreführende Angebote und Versuche, Eigentum oder Accounts anderer Benutzer zu stehlen, sind streng verboten.",
+
+r502t:"Persönliche Daten",
+
+r502:
+"Veröffentliche oder verbreite niemals private Informationen einer anderen Person ohne deren Erlaubnis.",
+
+r503t:"Phishing",
+
+r503:
+"Phishing-Links, gefälschte Login-Seiten, Token-Diebstahl, Zugangsdaten-Diebstahl und Account-Übernahmeversuche sind streng verboten.",
+
+r504t:"Unbefugter Zugriff",
+
+r504:
+"Der Versuch, ohne Erlaubnis auf private Channels, Accounts, Systeme oder Inhalte zuzugreifen, ist verboten.",
+
+gameTitle:"Spielregeln",
+
+r601t:"Exploits",
+
+r601:
+"Das Ausnutzen von Fehlern oder unbeabsichtigten Mechaniken für einen unfairen Vorteil ist verboten.",
+
+r602t:"Cheats",
+
+r602:
+"Nicht autorisierte Cheats, Client-Modifikationen, Speicher-Manipulation und ähnliche Methoden für einen unfairen Vorteil sind verboten.",
+
+r603t:"Crashes & Störungen",
+
+r603:
+"Das absichtliche Abstürzen von Spielen, Erstellen von Lag-Maschinen oder gezielte Störung des Gameplays ist verboten.",
+
+r604t:"Fehler melden",
+
+r604:
+"Schwerwiegende Bugs und Sicherheitslücken sollen privat und verantwortungsvoll an das Entwicklerteam gemeldet werden.",
+
+staffTitle:"Team & Moderation",
+
+r701t:"Moderationsentscheidungen",
+
+r701:
+"Moderatoren dürfen Maßnahmen ergreifen, wenn dies zum Schutz der Community notwendig ist, auch wenn eine Situation nicht ausdrücklich in einer einzelnen Regel beschrieben ist.",
+
+r702t:"Missbrauch von Moderationsrechten",
+
+r702:
+"Teammitglieder dürfen ihre Rechte nicht missbrauchen, Benutzer nicht unfair behandeln und Moderationswerkzeuge nicht für persönliche Zwecke verwenden.",
+
+r703t:"Einsprüche",
+
+r703:
+"Benutzer können Moderationsmaßnahmen über die offiziellen Support-Kanäle anfechten. Öffentliche Streitigkeiten über Strafen sollten vermieden werden.",
+
+channelsTitle:"Temporäre Channels",
+
+r801t:"Zweck",
+
+r801:
+"Temporäre Voice-Channels sind für die Dauer des jeweiligen Gesprächs oder der jeweiligen Aktivität vorgesehen.",
+
+r802t:"Channel-Rechte",
+
+r802:
+"Wenn verfügbar, können Ersteller eingeschränkte Moderations- und Bearbeitungsrechte innerhalb ihres temporären Channels erhalten.",
+
+r803t:"Benutzer trennen",
+
+r803:
+"Das Entfernen eines anderen Benutzers aus einem temporären Channel darf nur aus einem legitimen Grund und gegebenenfalls nach einer Warnung erfolgen. Benutzer aus Spaß oder zur Belästigung zu trennen ist verboten.",
+
+punishmentsTitle:"Regeldurchsetzung",
+
+punishmentsIntro:
+"Strafen richten sich nach Schwere, Umständen und bisherigem Verhalten. Das Team kann Strafen überspringen oder erhöhen, wenn dies aufgrund der Situation erforderlich ist.",
+
+tableViolation:"Verstoß",
+tableAction:"Mögliche Maßnahme",
+
+table1:"Leichter Spam oder Störung",
+action1:"Warnung / Timeout",
+
+table2:"Wiederholte Belästigung",
+action2:"Timeout / Temporärer Bann",
+
+table3:"Schwere Diskriminierung",
+action3:"Temporärer oder permanenter Bann",
+
+table4:"Betrug / Scam",
+action4:"Sofortiger Bann",
+
+table5:"Doxxing",
+action5:"Permanenter Bann",
+
+table6:"Malware / Account-Diebstahl",
+action6:"Permanenter Bann",
+
+important:
+"Das Team behält sich das Recht vor, bei schwerwiegenden Gefahren für die Sicherheit, Integrität oder den Schutz der Evolution-Games-Community sofort Maßnahmen zu ergreifen.",
+
+footer:"Offizielle Regeln & Community-Richtlinien"
+
+}
+
+};
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+const settingsButton =
+document.getElementById("settingsButton");
+
+const settingsMenu =
+document.getElementById("settingsMenu");
+
+settingsButton.addEventListener("click",function(event){
+
+    event.stopPropagation();
+
+    settingsMenu.classList.toggle("active");
+
+});
+
+
+document.addEventListener("click",function(event){
+
+    if(
+        !settingsMenu.contains(event.target) &&
+        !settingsButton.contains(event.target)
+    ){
+        settingsMenu.classList.remove("active");
+    }
+
+});
+
+
+/* =========================
+   LANGUAGE
+========================= */
+
+function changeLanguage(language){
+
+    document
+    .querySelectorAll("[data-i18n]")
+    .forEach(function(element){
+
+        const key =
+        element.getAttribute("data-i18n");
+
+        if(translations[language][key]){
+
+            element.textContent =
+            translations[language][key];
+
+        }
+
+    });
+
+
+    document
+    .querySelectorAll("[data-i18n-placeholder]")
+    .forEach(function(element){
+
+        const key =
+        element.getAttribute(
+            "data-i18n-placeholder"
+        );
+
+        if(translations[language][key]){
+
+            element.placeholder =
+            translations[language][key];
+
+        }
+
+    });
+
+
+    document.documentElement.lang =
+    language;
+
+
+    localStorage.setItem(
+        "evolution-language",
+        language
+    );
+
+
+    document
+    .getElementById("englishButton")
+    .classList.toggle(
+        "active",
+        language === "en"
+    );
+
+
+    document
+    .getElementById("germanButton")
+    .classList.toggle(
+        "active",
+        language === "de"
+    );
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+const searchInput =
+document.getElementById("ruleSearch");
+
+const sections =
+document.querySelectorAll(".searchable");
+
+const noResults =
+document.getElementById("noResults");
+
+
+searchInput.addEventListener("input",function(){
+
+    const search =
+    this.value.toLowerCase().trim();
+
+    let found = false;
+
+
+    sections.forEach(function(section){
+
+        const text =
+        section.textContent.toLowerCase();
+
+        if(
+            search === "" ||
+            text.includes(search)
+        ){
+
+            section.style.display = "";
+
+            found = true;
+
+        }else{
+
+            section.style.display = "none";
+
+        }
+
+    });
+
+
+    noResults.style.display =
+    found ? "none" : "block";
+
+});
+
+
+/* =========================
+   INITIAL LANGUAGE
+========================= */
+
+const savedLanguage =
+localStorage.getItem("evolution-language");
+
+changeLanguage(
+    savedLanguage === "de"
+    ? "de"
+    : "en"
+);
+
+</script>
+
+</body>
+</html>
