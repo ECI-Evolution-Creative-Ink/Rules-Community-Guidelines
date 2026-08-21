@@ -131,13 +131,12 @@ body{
 }
 
 .language-buttons{
-    display:flex;
+    display:grid;
+    grid-template-columns:1fr 1fr;
     gap:10px;
 }
 
 .language-button{
-    flex:1;
-
     padding:12px;
 
     border:1px solid #3a3a3a;
@@ -727,6 +726,22 @@ tr:hover td{
             onclick="changeLanguage('de')"
         >
             Deutsch
+        </button>
+
+        <button
+            class="language-button"
+            id="frenchButton"
+            onclick="changeLanguage('fr')"
+        >
+            Français
+        </button>
+
+        <button
+            class="language-button"
+            id="spanishButton"
+            onclick="changeLanguage('es')"
+        >
+            Español
         </button>
 
     </div>
@@ -2278,177 +2293,13 @@ important:
 
 footer:"Offizielle Regeln & Community-Richtlinien"
 
-}
+},
 
-};
+fr:{
 
+settingsTitle:"Paramètres",
+languageLabel:"Langue",
 
-/* =========================
-   SETTINGS
-========================= */
+subtitle:"RÈGLES ET DIRECTIVES DE LA COMMUNAUTÉ",
 
-const settingsButton =
-document.getElementById("settingsButton");
-
-const settingsMenu =
-document.getElementById("settingsMenu");
-
-settingsButton.addEventListener("click",function(event){
-
-    event.stopPropagation();
-
-    settingsMenu.classList.toggle("active");
-
-});
-
-
-document.addEventListener("click",function(event){
-
-    if(
-        !settingsMenu.contains(event.target) &&
-        !settingsButton.contains(event.target)
-    ){
-        settingsMenu.classList.remove("active");
-    }
-
-});
-
-
-/* =========================
-   LANGUAGE
-========================= */
-
-function changeLanguage(language){
-
-    document
-    .querySelectorAll("[data-i18n]")
-    .forEach(function(element){
-
-        const key =
-        element.getAttribute("data-i18n");
-
-        if(translations[language][key]){
-
-            element.textContent =
-            translations[language][key];
-
-        }
-
-    });
-
-
-    document
-    .querySelectorAll("[data-i18n-placeholder]")
-    .forEach(function(element){
-
-        const key =
-        element.getAttribute(
-            "data-i18n-placeholder"
-        );
-
-        if(translations[language][key]){
-
-            element.placeholder =
-            translations[language][key];
-
-        }
-
-    });
-
-
-    document.documentElement.lang =
-    language;
-
-
-    localStorage.setItem(
-        "evolution-language",
-        language
-    );
-
-
-    document
-    .getElementById("englishButton")
-    .classList.toggle(
-        "active",
-        language === "en"
-    );
-
-
-    document
-    .getElementById("germanButton")
-    .classList.toggle(
-        "active",
-        language === "de"
-    );
-
-}
-
-
-/* =========================
-   SEARCH
-========================= */
-
-const searchInput =
-document.getElementById("ruleSearch");
-
-const sections =
-document.querySelectorAll(".searchable");
-
-const noResults =
-document.getElementById("noResults");
-
-
-searchInput.addEventListener("input",function(){
-
-    const search =
-    this.value.toLowerCase().trim();
-
-    let found = false;
-
-
-    sections.forEach(function(section){
-
-        const text =
-        section.textContent.toLowerCase();
-
-        if(
-            search === "" ||
-            text.includes(search)
-        ){
-
-            section.style.display = "";
-
-            found = true;
-
-        }else{
-
-            section.style.display = "none";
-
-        }
-
-    });
-
-
-    noResults.style.display =
-    found ? "none" : "block";
-
-});
-
-
-/* =========================
-   INITIAL LANGUAGE
-========================= */
-
-const savedLanguage =
-localStorage.getItem("evolution-language");
-
-changeLanguage(
-    savedLanguage === "de"
-    ? "de"
-    : "en"
-);
-
-</script>
-
-</body>
-</html>
+heroTitle:"Règlement officiel de la communauté"... (20 KB left)
